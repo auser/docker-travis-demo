@@ -10,3 +10,6 @@ before_install:
   - pwd
   - docker build -t auser/travis .
   - docker run --rm --it -p "80:8080" auser/travis 
+
+script:
+  - npm start
