@@ -8,4 +8,6 @@ var port = process.env.PORT || 8080;
 // Serve up content from public directory
 app.use(serveStatic(__dirname + '/app'));
 
-app.listen(port);
+app.listen(port, function() {
+  console.log('Listening on port ' + port)
+});
