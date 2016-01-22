@@ -1,19 +1,24 @@
 sudo: required
-
 language: node_js
 node_js:
-  - "4.1"
-
+- '4.1'
 git:
   depth: 1
-
 services:
-  - docker
-
-before_install:  
-  - docker build -t auser/travis .
-  - docker run -d -p "127.0.0.1:80:8080" auser/travis 
-  - docker ps -a
-
+- docker
+before_install:
+- docker build -t auser/travis .
+- docker run -d -p "127.0.0.1:80:8080" auser/travis
+- docker ps -a
 script:
-  - npm start
+- npm start
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: AKIAIJO3GFXNYUJYIXQA
+  secret_access_key:
+    secure: Ahjheah6++h7f3fr445SF9m8OkfZWIJrBowZpybNE3I4WrbczLwcFNhrdkKMHg8/Rb0jKcm9Go5ImNsScXRcybSS2o5wgzm3eNiNn4lZK3uBz4rBYkJCeIoLeYxXG2+Y/fYCgCWRLnb720LT21cEuoSnDrQHcQD5JdINdP4eRuVHRV4QI3k4JacTfgdOEubBzaKn26kOa/OtxDmEP+cTZjrbRWmr5kq/PouWPIgyA/ZNeIjsgpKDpgjtgnsTeaXhxyFR6RQ+BNSMBA8rvDxf/wOiD1gInvwnWm8KgmNimBqQnS/LUE+MOHr4wAtJkFxyZn4HTWVHTu92VdpdTEJjQ+qe354Jw0i4YCFZm9vnFqSsulzWk1Rohitz2Lesb583OhryPNhVbR51YR9t3+g831Dy/QTmneCzGAEd7K68qy0pqkMiQkhJzhVufFYCcWwWarcgLU07fRdUvPf0SXBIVKcXAYYouIMBwvccEBpx5m1VwpWrjpk2U1U5qj3yfOwViaadDq4BMG9kVDTwbDsyYchSzh23WfbyUMXhHKzeUPbsMQucaRQR0otY0v8b+3bQxe+Cnd9vyEPT61te0UvtZ5KihfHrSijwJ3EFKJ8V7lsYY0GDYt2Kt6hln4BkxUBOxMfcD9bC1vynehNgGZ5XnMUc+8dwDyOXQHVDPba7NV0=
+  region: us-west-1
+  app: docker-travis-demo
+  env: demo
+  on:
+    repo: auser/docker-travis-demo
