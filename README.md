@@ -77,3 +77,21 @@ Create an application version
 ❯ travis setup elasticbeanstalk
 ...
 ```
+
+## Install `eb` tool
+
+```shell
+pip install awsebcli
+```
+
+## Setup environment
+
+```shell
+eb init
+eb create
+eb config save
+```
+
+## Add VPC/Subnet info
+
+And push to travis
