@@ -17,8 +17,8 @@ install:
 - docker-compose build
 
 script:
-  - docker-compose run web
-  - docker-compose up 
+  - docker-compose run app
+  - docker-compose up -d
 
 deploy:
   provider: elasticbeanstalk
