@@ -1,13 +1,11 @@
 sudo: required
 
-language: ruby
+language: node
 
 services:
   - docker
 
 before_install:  
-  - ls -la
-  - pwd
   - docker build -t auser/travis .
   - docker run --rm --it -p "80:8080" auser/travis 
 
